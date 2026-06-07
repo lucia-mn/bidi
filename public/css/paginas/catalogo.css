@@ -1,0 +1,82 @@
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+.catalogo-titulo {
+    text-align: center;
+    margin: 2rem 0 2rem 0;
+}
+
+/* buscador */
+.cat-buscar {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.formulario-buscar2 {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.lupa {
+    padding: 11px;
+    background-color: var(--principal);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+
+.cat-buscar input {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid gray;
+  width: 25rem; /* 400px */
+}
+
+/* libros */
+.libro-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.libro-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.libro-card a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.libro-card:hover {
+    transform: translateY(-5px);
+}
+
+.libro-card img {
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.libro-card h3 {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.libro-card p {
+    font-size: 14px;
+    color: #666;
+}

@@ -1,0 +1,136 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.20) 0%,
+    rgba(0, 0, 0, 0.20) 40%,
+    rgba(0, 0, 0, 0) 100%
+  ),
+  url("../../img/hero.jpg");
+  background-repeat: no-repeat;
+  background-size: cover, cover;
+
+  background-position:
+  center center,
+  center 65%;
+
+  min-height: 80vh;
+  padding-top: 0vh;
+  padding-bottom: 30vh;
+}
+
+.hero-texto {
+  padding: 4% 10% 8% 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.hero-s1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-s2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* buscador */
+.formulario-buscar {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.lupa {
+  padding: 11px;
+  background-color: var(--principal);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+
+.lupa img {
+  width: 20px;
+  height: 20px;
+}
+
+.hero-s2 img {
+  width: 20px;
+  height: 20px;
+}
+
+.hero-s3 {
+  padding: 0px 30px;
+  /* margin-top: 10px; */
+}
+
+.hero input {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  width: 25rem; /* 400px */
+}
+
+.btn-catalogo {
+  padding: 10px 40px;
+  border: none;
+  background: var(--principal);
+  color: #fff;
+  border-radius: 8px;
+  margin-bottom: 6px;
+
+  font-size: 0.875rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* textos hero */
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.hero h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 200;
+  color: #fff;
+}
+
+.hero h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 200;
+  color: #fff;
+}
+
+
+/* seccion 1 - libros del hero*/
+.hero-libros {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  gap: 30px; 
+  flex-wrap: wrap;
+  padding: 0% 10%;
+
+  position: relative; 
+  z-index: 2;            
+  transform: translateY(-16%);
+  align-items: center;
+}

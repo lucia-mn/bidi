@@ -1,0 +1,15 @@
+@import url("base/variables.css");
+@import url("base/tipografias.css");
+
+@import url("layout/header.css");
+@import url("layout/hero.css");
+@import url("layout/secciones.css");
+@import url("layout/footer.css");
+@import url("layout/subheader.css");
+
+@import url("componentes/componentes.css");
+
+
+@import url("paginas/catalogo.css");
+@import url("paginas/libro.css");
+@import url("paginas/reservas.css");

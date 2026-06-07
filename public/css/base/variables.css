@@ -1,0 +1,19 @@
+:root {
+  /* colores (ya los tienes) */
+  --principal: #ED7D91;
+  --secundario: #FFA060;
+  --fondo1: #FFF7F5;
+  --fondo2: #F2F2F2;
+  --oscuro: #555555;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

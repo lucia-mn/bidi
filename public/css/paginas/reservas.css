@@ -1,0 +1,170 @@
+.pagina-reserva {
+    max-width: 700px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    text-align: center;
+
+    /* border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.08); */
+}
+
+.pagina-reserva h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.pagina-reserva h2 {
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.pagina-reserva p {
+    color: #666;
+}
+
+
+/* CALENDARIO */
+.calendario {
+    margin-top: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    /* max-width: 600px; */
+}
+
+/* inputs */
+.cal-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.cal-nav select {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+/* celdas cal */
+.calendario table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.calendario th {
+    padding: 10px;
+    background: #f3f4f6;
+    font-weight: 600;
+    color: #333;
+}
+
+.calendario td {
+    padding: 12px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+/* dias */
+.calendario td:hover {
+    background: #e8f0ff;
+    cursor: pointer;
+}
+
+.calendario td.seleccionado {
+    background: #2d6cdf;
+    color: white;
+    font-weight: bold;
+}
+
+.calendario td.bloqueado {
+    background: #f5f5f5;
+    color: #aaa;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+
+#fechaVista,
+#fecha_fin {
+    font-weight: bold;
+    color: #2d6cdf;
+}
+
+/* botones */
+button[type="submit"] {
+    margin-top: 15px;
+    background-color: var(--principal);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--secundario);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.calendario td.disponible {
+    background: #e8f5e9;
+    cursor: pointer;
+}
+
+.calendario td.disponible:hover {
+    background: #c8e6c9;
+}
+
+.calendario td.bloqueado {
+    background: #f5f5f5;
+    color: #aaa;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.calendario td.seleccionado {
+    background: #2d6cdf;
+    color: white;
+    font-weight: bold;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.calendario td.disponible {
+    background: #e7f8ee;
+}
+
+.calendario td.disponible:hover {
+    background: #c8f3d6;
+}
+
+.calendario td.bloqueado {
+    background: #f3f3f3;
+    color: #aaa;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}

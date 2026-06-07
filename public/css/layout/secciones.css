@@ -1,0 +1,149 @@
+/* seccion 2 - novedades*/
+.bg-novedades {
+  background-color: var(--fondo1); 
+}
+
+.titulo-novedades {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--principal);
+  padding: 3% 0% 2% 16%;
+}
+
+.novedades {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  gap: 10px; 
+  flex-wrap: wrap;
+  padding: 2% 0% 8% 0%;
+  background-color: var(--fondo1);
+  align-items: center;
+}
+
+
+/* seccion 3 - mas leidos */
+.bg-mas-leidos {
+  background-color: #fff; 
+}
+
+.titulo-mas-leidos {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--oscuro);
+  padding: 6% 0% 2% 16%;
+}
+
+.mas-leidos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  gap: 10px; 
+  flex-wrap: wrap;
+  margin: 2% 16% 4% 16%;
+  padding: 4% 0% 6% 0%;
+  background-color: var(--fondo2);
+  align-items: center;
+  border-radius: 8px;
+}
+
+
+/* seccion 4 - descubre novedades */
+.descubre {
+  display: flex;
+  background: var(--fondo2);
+  padding: 45px 16%;
+  gap: 20px;
+}
+
+.descubre-texto {
+  flex: 1;
+  background: var(--fondo2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.descubre-texto h2 {
+  font-size: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--oscuro);
+}
+
+.descubre-texto span {
+  color: var(--principal);
+}
+
+.descubre-texto p {
+  font-size: 1.25rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: var(--oscuro);
+}
+
+.bg-libro-descubre {
+  flex: 1;
+  background: var(--fondo2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.libro-descubre {
+  width: 200px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: var(--oscuro);
+}
+
+.libro-descubre-texto {
+  font-size: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  color: var(--oscuro);
+  background-color: #fff;
+  border-radius: 4px;
+
+  margin: 0% 2% 0% 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  padding: 2% 8%;
+  position: relative;
+  z-index: 2;
+  transform: translateY(-16%);
+  transform: translateX(24%);
+  align-items: center;
+}
+
+
+/* seccion 5 - recomendados*/
+.bg-recomendados {
+  background-color: #fff; 
+}
+
+.titulo-recomendados {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--principal);
+  padding: 3% 0% 2% 16%;
+}
+
+.recomendados {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  gap: 10px; 
+  flex-wrap: wrap;
+  padding: 2% 0% 8% 0%;
+  background-color: #fff;
+  align-items: center;
+}

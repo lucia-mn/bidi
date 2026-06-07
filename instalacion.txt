@@ -1,0 +1,5 @@
+composer create-project "laravel/laravel:^10.0" miapp-laravel
+
+php artisan serve
+
+npm run dev

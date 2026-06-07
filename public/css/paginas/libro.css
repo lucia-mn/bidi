@@ -1,0 +1,70 @@
+.detalle-libro {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 50px;
+}
+
+.detalle-portada img {
+    width: 320px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+}
+
+.detalle-info {
+    flex: 1;
+}
+
+.detalle-info h1 {
+    margin-bottom: 15px;
+}
+
+.estrellas {
+    font-size: 1.5rem;
+    color: gold;
+    margin-bottom: 25px;
+}
+
+.detalle-info p {
+    margin-bottom: 12px;
+}
+
+.btn-reservar {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: var(--principal);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: .3s;
+    border: none;
+}
+
+.btn-reservar:hover {
+    opacity: .85;
+}
+
+.descripcion-libro,
+.reseñas-libro {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.descripcion-libro h2,
+.reseñas-libro h2 {
+    margin-bottom: 15px;
+}
+
+/* disponibilidad */
+.disponible{
+    color: var(--principal);
+    font-weight: bold;
+}
+
+.no-disponible{
+    color: var(--secundario);
+    font-weight: bold;
+}
