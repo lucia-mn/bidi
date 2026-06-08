@@ -2,7 +2,7 @@
 
     <div class="logo">
         <a href="{{ url('/') }}">
-            <img src="{{ asset('img/logo-header.svg') }}" alt="logo-header">
+            <img src="{{ asset('img/logo-header.svg') }}" alt="logo">
         </a>
     </div>
 
@@ -12,39 +12,43 @@
 
     <div class="botones-header">
 
-        {{-- no log --}}
-        @guest
+        {{-- visible --}}
+        <a href="{{ route('catalogo') }}">Catálogo</a>
+
+        @auth
+
+            {{-- admin --}}
+            @if(auth()->user()->rol === 'administrador')
+
+                <a href="{{ route('dashboard') }}">Dashboard</a>
+
+            @else
+
+                {{-- user --}}
+                <a href="{{ route('mis-libros') }}">Mis libros</a>
+                {{-- <a href="{{ route('reservas.index') }}">Reservas</a> --}}
+
+            @endif
+
+            {{-- perfiles --}}
+            <a href="{{ route('profile.edit') }}">Perfil</a>
+
+            {{-- logouts --}}
+            <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                @csrf
+                <button type="submit">Salir</button>
+            </form>
+
+        @else
+
+            {{-- invitado --}}
             <a href="{{ route('login') }}">Entrar</a>
 
             @if (Route::has('register'))
-                <a href="{{ route('register') }}">Regístrate</a>
+                <a href="{{ route('register') }}">Registro</a>
             @endif
-        @endguest
-
-
-        {{-- logueados --}}
-        @auth
-
-            @if(Auth::user()->rol === 'administrador')
-                <a href="{{ url('/dashboard') }}">Dashboard</a>
-            @endif
-
-            @if(Auth::user()->rol === 'usuario')
-                <a href="{{ route('mis.libros') }}">Mis libros</a>
-            @endif
-
-            <a href="{{ route('profile.edit') }}">Mi perfil</a>
-
-            {{-- logout --}}
-            <form method="POST" action="{{ route('logout') }}" style="display:inline;">
-                @csrf
-                <button type="submit" class="logout-btn">
-                    Cerrar sesión
-                </button>
-            </form>
 
         @endauth
 
     </div>
-
 </div>

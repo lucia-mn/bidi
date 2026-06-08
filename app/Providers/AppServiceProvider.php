@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,14 +20,26 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    // elementos del subheader
-    public function boot()
+    public function boot(): void
     {
+
+        // forzar HTTPS en producción (Railway)
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
+        
         try {
-            $categorias = Categoria::all();
-            // lo que sea que hagas con $categorias
+
+            View::share(
+                'categorias',
+                Categoria::all()
+            );
+
         } catch (\Exception $e) {
-            // silenciar el error durante el build
+
+            // Evita errores durante migraciones o despliegues
+            View::share('categorias', collect());
+
         }
     }
 }

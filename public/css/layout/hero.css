@@ -97,6 +97,10 @@
   text-decoration: none;
 }
 
+.btn-catalogo:hover {
+  background: var(--secundario);
+}
+
 /* textos hero */
 .hero h1 {
   font-family: 'Poppins', sans-serif;

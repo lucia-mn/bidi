@@ -43,7 +43,7 @@
 }
 
 .btn-reservar:hover {
-    opacity: .85;
+    background-color: var(--secundario);
 }
 
 .descripcion-libro,

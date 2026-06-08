@@ -37,10 +37,16 @@ Route::post('/libros/{libro}/reservar',
     ->name('libros.reservar');
 
 // menu usuario, mis libros
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/mis-libros', [LibroController::class, 'misLibros'])
         ->middleware('auth')
-        ->name('mis.libros');
+        ->name('mis-libros');
+
+});
+
+// enlace de perfil en menu del usario logueado que vaya al creado por breeze
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 });
 
 
