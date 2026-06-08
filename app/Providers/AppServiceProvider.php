@@ -20,8 +20,13 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     // elementos del subheader
-    public function boot(): void
+    public function boot()
     {
-        View::share('categorias', Categoria::all());
+        try {
+            $categorias = Categoria::all();
+            // lo que sea que hagas con $categorias
+        } catch (\Exception $e) {
+            // silenciar el error durante el build
+        }
     }
 }
