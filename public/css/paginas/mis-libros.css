@@ -1,0 +1,38 @@
+.mis-libros{
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.mis-libros h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.libro-card{
+    display:flex;
+    gap:20px;
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:1rem;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.info-libro {
+    text-align: left;
+}
+
+.btn-reservas {
+    margin-top: 1rem;
+}
+
+.portada-libro{
+    width:120px;
+    border-radius:10px;
+}
+
+.estado  {
+    margin-bottom: 2rem;
+    font-weight: 600;
+    color: var(--principal);
+}

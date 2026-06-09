@@ -195,13 +195,31 @@ class LibroController extends Controller
     }
 
     // menu pag mis libros
+    // libros reservados por el usuario
     public function misLibros()
     {
-        $reservas = Reserva::where('user_id', Auth::id())
+        $reservas = Reserva::with('libro')
+            ->where('user_id', Auth::id())
             ->where('estado', 'activa')
-            ->with('libro')
+            ->orderBy('fecha_inicio')
             ->get();
 
         return view('libro.mis-libros', compact('reservas'));
+    }
+
+    // cancelar reservas en mis libros
+    public function cancelarReserva(Reserva $reserva)
+    {
+        if ($reserva->user_id != Auth::id()) {
+            abort(403);
+        }
+
+        $reserva->estado = 'cancelada';
+        $reserva->save();
+
+        return back()->with(
+            'success',
+            'Reserva cancelada correctamente'
+        );
     }
 }

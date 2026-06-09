@@ -99,7 +99,6 @@
 
 /* botones */
 button[type="submit"] {
-    margin-top: 15px;
     background-color: var(--principal);
     color: white;
     border: none;

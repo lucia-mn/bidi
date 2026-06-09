@@ -1,5 +1,5 @@
-/* header */
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,34 +7,68 @@
   padding: 20px;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 60px;
+  height: auto;
+  display: block;
+}
+
 .titulo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--oscuro);
+  white-space: nowrap;
 }
 
-.logo {
-  width: 7%;
-  padding-left: 1%;
-}
-
-.header span {
+.titulo span {
   color: var(--principal);
 }
 
+/* opciones */
 .botones-header {
   display: flex;
-  padding-right: 1%;
-  gap: 20px;      
-} 
+  align-items: center;
+  gap: 20px;
+}
 
-.header a {
+.botones-header a {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 1rem;
   text-decoration: none;
   color: var(--oscuro);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.botones-header a:hover {
+  color: var(--principal);
+}
+
+.botones-header button {
+  color: var(--secundario);
+}
+
+.botones-header button:hover {
+  color: var(--secundario);
+  color: white;
+}
+
+/* logout */
+.botones-header form {
+  margin: 0;
 }
 
 .logout-btn {
@@ -44,10 +78,55 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 1rem;
-  color: #333;
+  color: var(--oscuro);
 }
 
 .logout-btn:hover {
   color: #c0392b;
 }
 
+
+
+/* responsive tablet */
+@media (max-width: 992px) {
+
+  .titulo {
+    font-size: 1.3rem;
+  }
+
+  .botones-header {
+    gap: 15px;
+  }
+}
+
+/* responsive movil */
+@media (max-width: 768px) {
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+}
+
+  .titulo {
+    position: static;
+    transform: none;
+    order: 2;
+    white-space: normal;
+}
+
+  .logo {
+      order: 1;
+  }
+
+  .botones-header {
+    order: 3;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+  .logo img {
+    width: 50px;
+  }
+}

@@ -49,6 +49,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 });
 
+// cancelar reservas en mi perfil
+Route::delete(
+    '/reservas/{reserva}',
+    [LibroController::class, 'cancelarReserva']
+)->name('reservas.cancelar');
+
 
 
 

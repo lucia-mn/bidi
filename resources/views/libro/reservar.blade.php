@@ -43,10 +43,10 @@
             <span id="fecha_fin">-</span>
         </p>
 
-        <p>
+        {{-- <p>
             Ejemplares libres:
             <span id="ejemplaresLibres">-</span>
-        </p>
+        </p> --}}
 
         <br><br>
 
@@ -101,10 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
     ];
 
-    /* =========================
-       SELECTS
-    ========================= */
-
+    /* selects */
     meses.forEach((m, i) => {
         let opt = document.createElement("option");
         opt.value = i;
@@ -119,10 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
         anioSelect.appendChild(opt);
     }
 
-    /* =========================
-       UTILIDADES
-    ========================= */
-
+    /* funciones */
     function normalizar(fecha) {
         const f = new Date(fecha);
         f.setHours(0, 0, 0, 0);
@@ -154,10 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return ocupados < {{ $ejemplaresTotales }};
     }
 
-    /* =========================
-       CALENDARIO
-    ========================= */
-
+    /* calendario */
     function pintarCalendario() {
         calBody.innerHTML = "";
 
@@ -229,10 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    /* =========================
-       NAVEGACIÓN
-    ========================= */
-
+   /* inputs mes y dia */
     mesSelect.addEventListener("change", e => {
         mes = parseInt(e.target.value);
         pintarCalendario();
@@ -242,10 +230,6 @@ document.addEventListener("DOMContentLoaded", function () {
         anio = parseInt(e.target.value);
         pintarCalendario();
     });
-
-    /* =========================
-       INICIO
-    ========================= */
 
     pintarCalendario();
 
