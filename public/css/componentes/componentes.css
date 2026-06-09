@@ -125,7 +125,7 @@
   height: 32px;
   border: none;
   border-radius: 4px;
-  background-color: var(--fondo1);
+  background-color: #fff;
   color: var(--principal);
   font-size: 1.125rem;
   cursor: pointer;

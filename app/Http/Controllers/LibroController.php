@@ -14,11 +14,20 @@ class LibroController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    // public function index()
+    // {
+    //     $libros = Libro::with('categoria')->get();
+
+    //     return view('libros.index', compact('libros'));
+    // }
+
+    // admin libro vista index
     public function index()
     {
-        $libros = Libro::with('categoria')->get();
+        $libros = Libro::latest()->paginate(10);
 
-        return view('libros.index', compact('libros'));
+        return view('admin.libros.index', compact('libros'));
     }
 
     /**
@@ -88,9 +97,19 @@ class LibroController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $libro = Libro::findOrFail($id);
+
+        // libros landing que no se pueden borrar
+        if ($libro->id <= 17) {
+            return redirect()->back()->with('error', 'Este libro no se puede eliminar :)');
+        }
+
+        $libro->delete();
+
+        return redirect()->route('admin.libros.index')
+            ->with('success', 'Libro eliminado correctamente.');
     }
 
     // catalogo, devuelve todos los libros
@@ -221,5 +240,12 @@ class LibroController extends Controller
             'success',
             'Reserva cancelada correctamente'
         );
+    }
+
+
+    // lector pdf
+    public function lector(Libro $libro)
+    {
+        return view('libro.lector', compact('libro'));
     }
 }

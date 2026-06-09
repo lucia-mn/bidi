@@ -135,7 +135,7 @@
     <h2 class="titulo-recomendados">Recomendaciones</h2>
 
     <div class="recomendados">
-        <button class="flecha-izq2">❮</button>
+        <button class="flecha-izq">❮</button>
 
         @foreach($recomendados as $libro)
             <div class="libro2">
@@ -152,7 +152,7 @@
             </div>
         @endforeach
 
-        <button class="flecha-der2">❯</button>
+        <button class="flecha-der">❯</button>
     </div>
 
 @endsection

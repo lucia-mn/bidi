@@ -1,0 +1,139 @@
+.admin-layout {
+    display: flex;
+    min-height: 80vh;
+}
+
+/* sidebar */
+.admin-sidebar {
+    width: 220px;
+    background: var(--fondo1);
+    color: white;
+    padding: 20px;
+}
+
+.sidebar-title {
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 1rem;
+    font-size: 18px;
+    color: var(--principal);
+}
+
+.sidebar-nav a {
+    display: block;
+    color: var(--principal);
+    text-decoration: none;
+    padding: 8px 0;
+    text-decoration: none;
+}
+
+.sidebar-nav a:hover {
+    color: var(--secundario);
+}
+
+/* contenido */
+.admin-content {
+    flex: 1;
+    padding: 30px;
+    background: var(--fondo2);
+}
+
+
+
+
+
+/* tablas vistas index */
+.header-section {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.card {
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.table {
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table th {
+    text-align:left;
+    padding:15px;
+    background:#f5f5f5;
+}
+
+.table td {
+    padding:15px;
+    border-bottom:1px solid #ececec;
+}
+
+.table tr:hover {
+    background:#fafafa;
+}
+
+.mini-portada {
+    width:50px;
+    height:70px;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+.acciones {
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.btn-editar {
+    background: var(--principal);
+    color:white;
+    padding:6px 12px;
+    border-radius:6px;
+    text-decoration:none;
+}
+
+.btn-editar:hover {
+    background: var(--secundario);
+}
+
+.btn-borrar {
+    background:#dc2626;
+    color:white;
+    border:none;
+    padding:6px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.bloqueado {
+    color:#888;
+    font-size:14px;
+}
+
+.btn-primary {
+    background: var(--secundario);
+    color:white;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:8px;
+}
+
+.paginacion-admin nav {
+    display: flex;
+    justify-content: center;
+}
+
+.paginacion-admin svg {
+    width: 18px;
+    height: 18px;
+}
+
+.paginacion-admin p {
+    display: none;
+}

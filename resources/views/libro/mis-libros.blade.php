@@ -32,6 +32,12 @@
                     </p>
 
                     <div class="btn-reservas">
+
+                        {{-- boton leer --}}
+                        <a href="{{ $reserva->libro->archivo_pdf }}" target="_blank">
+                            Leer libro
+                        </a>
+
                         {{-- cancelar reserva --}}
                         <form
                             action="{{ route('reservas.cancelar', $reserva) }}"

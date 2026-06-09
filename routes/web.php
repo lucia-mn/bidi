@@ -49,12 +49,36 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 });
 
-// cancelar reservas en mi perfil
+// cancelar reservas en mis libros
 Route::delete(
     '/reservas/{reserva}',
     [LibroController::class, 'cancelarReserva']
 )->name('reservas.cancelar');
 
+
+// lector de pdf
+Route::get('/lector/{libro}', [LibroController::class, 'lector'])
+    ->middleware('auth')
+    ->name('lector');
+
+
+// dahsboard y crud
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    Route::resource('libros', LibroController::class);
+});
+
+// proteger rutas dashboard
+Route::middleware(['auth'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::resource('libros', LibroController::class);
+});
 
 
 
@@ -70,9 +94,9 @@ Route::delete(
 */
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

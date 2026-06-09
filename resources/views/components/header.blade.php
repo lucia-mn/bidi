@@ -20,7 +20,7 @@
             {{-- admin --}}
             @if(auth()->user()->rol === 'administrador')
 
-                <a href="{{ route('dashboard') }}">Dashboard</a>
+                <a href="{{ route('admin.dashboard') }}">Dashboard</a>
 
             @else
 
