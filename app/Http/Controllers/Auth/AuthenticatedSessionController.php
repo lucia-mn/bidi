@@ -29,11 +29,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // si es admin te envia a la tabla y si es uusario a la home
+        // si es admin te envia a la tabla y si es usuario a la home
        $user = $request->user();
 
         if ($user->rol === 'administrador') {
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         }
 
         return redirect('/');
@@ -42,7 +42,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Destroy an authenticated session.
      */
-    
+
     // cuadno cierras sesin con admin o user
     public function destroy(Request $request): RedirectResponse
     {
