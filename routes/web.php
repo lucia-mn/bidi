@@ -7,13 +7,13 @@ use App\Http\Controllers\LibroController;
 use App\Http\Controllers\HomeController;
 
 
-Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function() {
+// Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function() {
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::resource('libros', LibroController::class);
+//     Route::resource('libros', LibroController::class);
 
-});
+// });
 
 // landing
 Route::get('/', [HomeController::class, 'index']);
@@ -47,6 +47,9 @@ Route::middleware(['auth'])->group(function () {
 // enlace de perfil en menu del usario logueado que vaya al creado por breeze
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 // cancelar reservas en mis libros
@@ -63,21 +66,37 @@ Route::get('/lector/{libro}', [LibroController::class, 'lector'])
 
 
 // dahsboard y crud
+// Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+
+//     Route::get('/dashboard', function () {
+//         return view('admin.dashboard');
+//     })->name('dashboard');
+
+//     // Route::resource('libros', LibroController::class);
+// });
+
+
+
+// proteger rutas dashboard
+// Route::middleware(['auth'])
+//     ->prefix('admin')
+//     ->name('admin.')
+//     ->group(function () {
+//         Route::resource('libros', LibroController::class);
+// });
+
+// Unificamos todo lo que sea del panel de administración aquí
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
+    // AQUÍ DEJAMOS LOS LIBROS UNA SOLA VEZ
     Route::resource('libros', LibroController::class);
-});
-
-// proteger rutas dashboard
-Route::middleware(['auth'])
-    ->prefix('admin')
-    ->name('admin.')
-    ->group(function () {
-        Route::resource('libros', LibroController::class);
+    
+    // Si necesitas las de home, clubs y players bajo el alias admin., puedes meterlas aquí mismo:
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
 
@@ -98,11 +117,11 @@ Route::middleware(['auth'])
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 
 
@@ -116,16 +135,16 @@ Route::middleware('auth')->group(function () {
 
 // Auth::routes(['verify' => true]);
 
-Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function() {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    // Route::resource('users', UserController::class);
-    Route::resource('clubs', ClubsController::class);
-    Route::resource('players', PlayersController::class);
+// Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function() {
+//     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//     // Route::resource('users', UserController::class);
+//     Route::resource('clubs', ClubsController::class);
+//     Route::resource('players', PlayersController::class);
 
-    // Route::resource('clients', ClientController::class);
-    // Route::resource('cprojects', ProjectController::class);
-    // Route::resource('tasks', TaskController::class);
-});
+//     // Route::resource('clients', ClientController::class);
+//     // Route::resource('cprojects', ProjectController::class);
+//     // Route::resource('tasks', TaskController::class);
+// });
 
 require __DIR__.'/auth.php';
 
