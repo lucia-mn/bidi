@@ -1,89 +1,148 @@
 .mis-libros{
-    max-width: 1000px;
+    max-width: 900px;
     margin: 40px auto;
+    padding: 0 16px;
 }
 
 .mis-libros h1 {
     text-align: center;
     margin-bottom: 2rem;
+    font-size: 1.8rem;
 }
 
-.libro-card{
-    display:flex;
-    gap:20px;
-    background:#fff;
-    padding:20px;
-    border-radius:12px;
-    margin-bottom:1rem;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
+.libro-card-mis-libros {
+    display: flex;
+    gap: 16px;
+    background: #fff;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    align-items: flex-start;
 }
 
-.info-libro {
-    text-align: left;
-}
-
-.btn-reservas {
-    margin-top: 1rem;
-}
-
-.portada-libro {
-    width: 120px;
-    height: 170px;
-    object-fit: cover; 
-    border-radius: 10px;
+.portada-libro-mis-libros {
+    width: 85px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
     flex-shrink: 0;
 }
 
-.estado  {
-    margin-bottom: 2rem;
-    font-weight: 600;
-    color: var(--principal);
-}
-
-
-
-/* form de reseñas */
-.reseña-form {
-    max-width: 700px;
-    margin: 30px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+.info-libro {
+    flex: 1;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 4px;
 }
 
-.reseña-form label {
-    font-weight: 600;
-    color: #333;
+.info-libro h2 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.info-libro p {
+    font-size: 0.85rem;
+    margin: 2px 0;
+}
+
+.btn-reservas {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-reservas a,
+.btn-reservas button {
+    padding: 7px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-reservas a {
+    background: var(--principal);
+    color: white;
+}
+
+.btn-reservas a:hover {
+    background-color: var(--secundario);
+}
+
+.btn-reservas button {
+    background: #eee;
+}
+
+.reseña-form {
+    margin-top: 10px;
+    padding: 10px;
+    background: #fafafa;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.85rem;
 }
 
 .reseña-form input,
 .reseña-form textarea {
-    padding: 10px;
+    padding: 7px;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: inherit;
+    border-radius: 6px;
+    font-size: 0.8rem;
 }
 
 .reseña-form textarea {
-    min-height: 100px;
-    resize: vertical;
+    min-height: 60px;
 }
 
 .reseña-form button {
     background: var(--principal);
     color: white;
     border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
+    padding: 7px 10px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: .2s;
+    font-size: 0.8rem;
     align-self: flex-start;
 }
 
-.reseña-form button:hover {
-    background: var(--secundario);
+.estado{
+    text-align: center;
+    margin: 1rem 0 2rem;
+    font-weight: 600;
+    color: var(--principal);
+}
+
+
+/* movil */
+@media (max-width: 768px) {
+
+    .libro-card-mis-libros {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .portada-libro-mis-libros {
+        width: 36%; 
+        height: 145px;
+    }
+
+    .info-libro {
+        text-align: center;
+    }
+
+    .btn-reservas {
+        justify-content: center;
+    }
+
+    .reseña-form {
+        width: 100%;
+    }
 }

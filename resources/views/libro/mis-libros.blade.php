@@ -15,13 +15,13 @@
 
         @foreach($reservas as $reserva)
 
-            <div class="libro-card">
+            <div class="libro-card-mis-libros">
 
                 <img 
                     src="{{ str_starts_with($reserva->libro->portada, 'http') ? 
                         $reserva->libro->portada : asset('img/' . $reserva->libro->portada) }}" 
                         alt="{{ $reserva->libro->titulo }}" 
-                        class="portada-libro">
+                        class="portada-libro-mis-libros">
 
                 {{-- info del libro --}}
                 <div class="info-libro">

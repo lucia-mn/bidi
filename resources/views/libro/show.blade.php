@@ -10,7 +10,7 @@
      @if(session('success'))
           <div class="alert-success">
                <p>{{ session('success') }}</p>
-               <p>Ya puedes ver y leer tu libro en la sección de <a href="{{ route('mis-libros') }}" class="enlace-mis-libros">Mis Libros</a>.</p>
+               <p>Ya puedes ver y leer tu libro en la sección de <a href="{{ route('mis-libros') }}" class="enlace-mis-libros">Mis Libros</a></p>
           </div>
      @endif
 
@@ -81,8 +81,8 @@
           <h2>Puntuación</h2>
 
           <div class="estrellas">
-          {{ number_format($mediaPuntuacion, 1) ?? 'Sin valoraciones' }}
-     </div>
+               {{ $mediaPuntuacion ? number_format($mediaPuntuacion, 1) : 'Sin valoraciones' }}
+          </div>
 
      <h2>Reseñas</h2>
      
