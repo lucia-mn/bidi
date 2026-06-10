@@ -54,9 +54,9 @@
         <div class="footer-columna redes-sociales">
             <h4>Redes sociales</h4>
             <ul class="iconos">
-                <img src="{{ asset('img/whatsapp.svg') }}" alt="whatsapp">
-                <img src="{{ asset('img/instagram.svg') }}" alt="instagram">
-                <img src="{{ asset('img/facebook.svg') }}" alt="facebook">
+                <li><img src="{{ asset('img/whatsapp.svg') }}" alt="whatsapp"></li>
+                <li><img src="{{ asset('img/instagram.svg') }}" alt="instagram"></li>
+                <li><img src="{{ asset('img/facebook.svg') }}" alt="facebook"></li>
                 <!-- <li><img src="img/whatsapp.svg" alt="whatsapp"></li>
                 <li><img src="img/instagram.svg" alt="instagram"></li>
                 <li><img src="img/facebook.svg" alt="facebook"></li> -->

@@ -138,3 +138,48 @@
   transform: translateY(-16%);
   align-items: center;
 }
+
+
+/* movil */
+@media (max-width: 768px) {
+
+  .hero {
+    min-height: 60vh;
+    padding-bottom: 10vh;
+    background-position: center center;
+  }
+
+  .hero-texto {
+    padding: 8% 5%;
+    gap: 20px;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero h2 {
+    font-size: 0.9rem;
+  }
+
+  .hero-s2 {
+    justify-content: center;
+  }
+
+  .formulario-buscar {
+    width: 100%;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .hero input {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .btn-catalogo {
+    padding: 10px 25px;
+    font-size: 0.85rem;
+  }
+
+}

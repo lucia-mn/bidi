@@ -9,6 +9,7 @@ body {
   font-family: 'Poppins', sans-serif;
   color: var(--oscuro);
   font-size: 1rem; 
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
