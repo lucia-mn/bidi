@@ -8,7 +8,7 @@
 
      <div class="detalle-libro">
           <div class="detalle-portada">
-               <img src="{{ asset('img/' . $libro->portada) }}" alt="{{ $libro->titulo }}">
+               <img src="{{ $libro->portada }}" alt="{{ $libro->titulo }}">
           </div>
 
           <div class="detalle-info">
@@ -61,7 +61,7 @@
      {{-- reseñas --}}
      <div class="resenas-libro">
           <h2>Puntuación</h2>
-          
+
           <div class="estrellas">
           {{ number_format($mediaPuntuacion, 1) ?? 'Sin valoraciones' }}
      </div>

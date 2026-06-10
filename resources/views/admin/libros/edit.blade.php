@@ -35,6 +35,9 @@
                     <label>ISBN</label>
                     <input type="text" name="isbn" value="{{ $libro->isbn }}">
                 </div>
+                @error('isbn')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
 
                 <div class="form-group">
                     <label>Descripción</label>
