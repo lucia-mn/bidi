@@ -27,7 +27,7 @@
             Reseñas
         </a>
         <a href="{{ route('admin.usuarios.index') }}">
-            Usuario
+            Usuarios
         </a>
 
         {{-- <hr>

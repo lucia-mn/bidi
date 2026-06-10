@@ -11,7 +11,7 @@
         height="900px">
     </iframe>
 @else
-    <p>No hay PDF disponible para este libro.</p>
+    <p>No hay PDF disponible para este libro</p>
 @endif
 
 @endsection

@@ -102,14 +102,21 @@
 
 /* movil */
 @media (max-width: 768px) {
+
     .formulario-buscar2 {
         width: 100%;
         justify-content: center;
     }
 
+    .cat-buscar {
+        padding: 0 12px;
+    }
+
     .cat-buscar input {
-        width: 100%;
-        max-width: 100%;
+        flex: 1;            
+        max-width: 68%;
+        padding: 10px 12px;
+        font-size: 14px;
     }
 
     .libro-card h3 {
