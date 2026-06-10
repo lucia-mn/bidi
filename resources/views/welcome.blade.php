@@ -140,9 +140,9 @@
         @foreach($recomendados as $libro)
             <div class="libro2">
                 <a href="{{ route('libro.show', $libro) }}">
-                    <img src="{{ str_starts_with($libro->portada, 'http') ? 
-                        $libro->portada : 
-                        asset('img/' . $libro->portada) }}" alt="{{ $libro->titulo }}" class="tu-clase-css">
+                    <img src="{{ asset('img/' . $libro->portada) }}"
+                        alt="{{ $libro->titulo }}"
+                        class="libro2-img">
 
                     <p class="libro-titulo">{{ $libro->titulo }}</p>
                     <p class="libro-autor">{{ $libro->autor }}</p>
