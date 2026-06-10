@@ -40,7 +40,7 @@
                     <label>Autor</label>
                     <input type="text" name="autor" required>
                 </div>
-                @error('titulo')
+                @error('autor')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
 
