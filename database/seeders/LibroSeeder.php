@@ -10,9 +10,6 @@ class LibroSeeder extends Seeder
     public function run(): void
     {
         Libro::insert([
-            // =========================
-            // HERO / CLÁSICOS
-            // =========================
             [
                 'titulo' => 'Orgullo y Prejuicio',
                 'autor' => 'Jane Austen',
@@ -73,10 +70,6 @@ class LibroSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-
-            // =========================
-            // NOVEDADES
-            // =========================
             [
                 'titulo' => 'Dune',
                 'autor' => 'Frank Herbert',
@@ -152,10 +145,6 @@ class LibroSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-
-            // =========================
-            // MÁS LEÍDOS
-            // =========================
             [
                 'titulo' => 'De sangre y ceniza',
                 'autor' => 'Jennifer L. Armentrout',
@@ -216,10 +205,6 @@ class LibroSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-
-            // =========================
-            // ENTREVISTA CON EL VAMPIRO
-            // =========================
             [
                 'titulo' => 'Entrevista con el vampiro',
                 'autor' => 'Anne Rice',
@@ -235,10 +220,6 @@ class LibroSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-
-            // =========================
-            // RECOMENDADOS
-            // =========================
             [
                 'titulo' => 'El Principito',
                 'autor' => 'Antoine de Saint-Exupéry',
