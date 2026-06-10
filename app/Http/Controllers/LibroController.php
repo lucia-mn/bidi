@@ -49,19 +49,23 @@ class LibroController extends Controller
     {
         // validaciones
         $request->validate([
-        'titulo' => 'required|string|max:255',
-        'autor' => 'required|string|max:255',
-        'isbn' => 'required|string|max:50',
-        'descripcion' => 'nullable|string',
-        'genero' => 'nullable|string|max:100',
-        'idioma' => 'nullable|string|max:50',
-        'anio_publicacion' => 'nullable|integer|min:0|max:2026',
-        'clasificacion_edad' => 'required|in:infantil,juvenil,adulto',
-        'max_prestamos' => 'required|integer|min:1',
-        'categoria_id' => 'required|exists:categorias,id',
-        'portada' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-        'archivo_pdf' => 'nullable|mimes:pdf|max:20000',
-    ]);
+            'titulo' => 'required|string|max:255',
+            'autor' => 'required|string|max:255',
+            'isbn' => 'required|string|max:50|unique:libros,isbn',
+            'descripcion' => 'nullable|string',
+            'genero' => 'nullable|string|max:100',
+            'idioma' => 'nullable|string|max:50',
+            'anio_publicacion' => 'nullable|integer|min:0|max:2026',
+            'clasificacion_edad' => 'required|in:infantil,juvenil,adulto',
+            'max_prestamos' => 'required|integer|min:1',
+            'categoria_id' => 'required|exists:categorias,id',
+            'portada' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'archivo_pdf' => 'nullable|mimes:pdf|max:20000',
+        ], [
+            // Mensajes de error personalizados
+            'isbn.unique' => 'Este número de ISBN ya se encuentra registrado en la biblioteca',
+            'isbn.required' => 'El campo ISBN es obligatorio',
+        ]);
 
         // portada cloudianry
         $portadaUrl = null;
@@ -174,7 +178,7 @@ class LibroController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:255',
             'autor' => 'required|string|max:255',
-            'isbn' => 'required|string|max:50',
+            'isbn' => 'required|string|max:50|unique:libros,isbn,' . $libro->id,
             'descripcion' => 'nullable|string',
             'genero' => 'nullable|string|max:100',
             'idioma' => 'nullable|string|max:50',
@@ -184,6 +188,8 @@ class LibroController extends Controller
             'categoria_id' => 'required|exists:categorias,id',
             'portada' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'archivo_pdf' => 'nullable|mimes:pdf|max:20000',
+        ], [
+            'isbn.unique' => 'Este número de ISBN ya está asignado a otro libro',
         ]);
 
         $portadaUrl = $libro->portada;
