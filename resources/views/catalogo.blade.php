@@ -24,9 +24,9 @@
             <div class="libro-card">
                 <a href="{{ route('libro.show', $libro) }}">
 
-                    <img src="{{ asset('img/' . $libro->portada) }}"
-                        alt="{{ $libro->titulo }}"
-                        style="width:120px">
+                    <img src="{{ $reserva->libro->portada }}" 
+                        alt="{{ $reserva->libro->titulo }}" 
+                        class="portada-libro">
 
                     <h3>{{ $libro->titulo }}</h3>
                     <p>{{ $libro->autor }}</p>
