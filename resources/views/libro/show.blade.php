@@ -6,6 +6,22 @@
 
      @include('components.subheader')
 
+     {{-- mensaje reserva bien --}}
+     @if(session('success'))
+          <div class="alert-success">
+               <p>Reserva hecha :){{ session('success') }}</p>
+               <p>Ya puedes ver y leer tu libro en la sección de <a href="{{ route('mis-libros') }}" class="enlace-mis-libros">Mis Libros</a>.</p>
+          </div>
+     @endif
+
+     {{-- mensaje error --}}
+     @if(session('error'))
+          <div class="alert-error">
+               <strong>Aviso:</strong> {{ session('error') }}
+          </div>
+     @endif
+
+     {{-- empieza el bloque --}}
      <div class="detalle-libro">
           <div class="detalle-portada">
                <img src="{{ $libro->portada }}" alt="{{ $libro->titulo }}">

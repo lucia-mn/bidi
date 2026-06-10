@@ -3,6 +3,15 @@
 @section('title', 'Reservar libro')
 
 @section('content')
+
+    {{-- mensaje de error --}}
+    @if(session('error'))
+        <div class="alert-error">
+            <strong>Aviso:</strong> {{ session('error') }}
+        </div>
+    @endif
+
+{{-- empieza el bloque --}}
 <div class="pagina-reserva">
 
     <h1>Reservar libro</h1>
@@ -43,10 +52,10 @@
             <span id="fecha_fin">-</span>
         </p>
 
-        {{-- <p>
+        <p>
             Ejemplares libres:
             <span id="ejemplaresLibres">-</span>
-        </p> --}}
+        </p>
 
         <br><br>
 
@@ -58,18 +67,6 @@
             <p>No puedes reservar este libro</p>
         @endif
 
-        @if(session('success'))
-            <div class="alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if(session('error'))
-            <div class="alert-error">
-                {{ session('error') }}
-            </div>
-        @endif
-
     </form>
 </div>
 @endsection
@@ -77,6 +74,12 @@
 
 @section('scripts')
 <script>
+window.cerrarPopup = function() {
+    const popup = document.getElementById("popupReserva");
+    if (popup) {
+        popup.style.display = "none";
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -189,7 +192,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     td.classList.add("seleccionado");
 
-                    let str = fecha.toISOString().split('T')[0];
+                    let yyyy = fecha.getFullYear();
+                    let mm = String(fecha.getMonth() + 1).padStart(2, '0');
+                    let dd = String(fecha.getDate()).padStart(2, '0');
+                    
+                    let str = `${yyyy}-${mm}-${dd}`;
 
                     fechaInput.value = str;
                     fechaVista.textContent = str;
@@ -197,12 +204,18 @@ document.addEventListener("DOMContentLoaded", function () {
                     let fin = new Date(fecha);
                     fin.setDate(fin.getDate() + 14);
 
-                    fechaFin.textContent = fin.toISOString().split('T')[0];
+                    let finYyyy = fin.getFullYear();
+                    let finMm = String(fin.getMonth() + 1).padStart(2, '0');
+                    let finDd = String(fin.getDate()).padStart(2, '0');
+                    
+                    fechaFin.textContent = `${finYyyy}-${finMm}-${finDd}`;
 
                     let ocupados = ejemplaresOcupadosEnFecha(fecha);
 
-                    document.getElementById("ejemplaresLibres").textContent =
-                        ({{ $ejemplaresTotales }} - ocupados) + " / " + {{ $ejemplaresTotales }};
+                    const elLibres = document.getElementById("ejemplaresLibres");
+                    if (elLibres) {
+                        elLibres.textContent = ({{ $ejemplaresTotales }} - ocupados) + " / " + {{ $ejemplaresTotales }};
+                    }
                 };
             }
 
@@ -234,6 +247,5 @@ document.addEventListener("DOMContentLoaded", function () {
     pintarCalendario();
 
 });
-
 </script>
 @endsection

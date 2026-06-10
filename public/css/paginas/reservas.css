@@ -147,7 +147,7 @@ button[type="submit"]:hover {
 
 .alert-error {
     background: #fee2e2;
-    color: #991b1b;
+    color: (--principal);
     padding: 10px;
     border-radius: 8px;
     margin-bottom: 10px;
@@ -166,4 +166,34 @@ button[type="submit"]:hover {
     color: #aaa;
     cursor: not-allowed;
     text-decoration: line-through;
+}
+
+
+/* mensajes de libro reservado o error */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.enlace-mis-libros {
+    color: #155724;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.enlace-mis-libros:hover {
+    color: #0b2e14;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: var(--principal);
+    border: 1px solid #f5c6cb;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 20px;
 }
