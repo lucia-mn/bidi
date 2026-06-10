@@ -10,6 +10,10 @@
         <span>bi</span>blioteca <span>di</span>gital
     </div>
 
+    <button class="menu-toggle" id="menuToggle">
+        ☰
+    </button>
+
     <div class="botones-header">
 
         {{-- visible --}}

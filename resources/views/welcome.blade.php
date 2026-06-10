@@ -6,6 +6,19 @@
 
     @include('components.subheader')
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const boton = document.getElementById('menuToggle');
+            const menu = document.querySelector('.botones-header');
+
+            boton.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+
+        });
+    </script>
+
     <!-- seccion hero -->
     <div class="hero">
         <div class="hero-texto">

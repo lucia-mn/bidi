@@ -14,3 +14,27 @@
   color: var(--oscuro);
   padding: 0px 2%;
 }
+
+
+/* movil */
+@media (max-width: 768px) {
+
+  .sub-header {
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 10px;
+
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .sub-header::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sub-header a {
+    flex-shrink: 0;
+    font-size: 0.8rem;
+  }
+
+}
