@@ -18,9 +18,10 @@ class Libro extends Model
         'idioma',
         'anio_publicacion',
         'portada',
+        'archivo_pdf',
         'clasificacion_edad',
         'max_prestamos',
-        'categoria_id'
+        'categoria_id',
     ];
 
     // relaciones de otars entiedades con libro
@@ -37,6 +38,11 @@ class Libro extends Model
     public function resenas()
     {
         return $this->hasMany(Resena::class);
+    }
+
+    public function ejemplares()
+    {
+        return $this->hasMany(Ejemplar::class);
     }
 
 }

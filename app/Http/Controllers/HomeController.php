@@ -48,7 +48,7 @@ class HomeController extends Controller
         $libros = Libro::with('categoria');
 
         // filtro categoria
-        if ($request->has('categoria')) {
+        if ($request->filled('categoria')) {
             $libros->where('categoria_id', $request->categoria);
         }
 
@@ -60,7 +60,7 @@ class HomeController extends Controller
             });
         }
 
-        $libros = $libros->get();
+        $libros = $libros->paginate(30);
 
 
         return view('catalogo', compact('libros', 'categorias'));

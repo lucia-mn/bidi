@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\EjemplarController;
+use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ResenaController;
+
 
 // Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function() {
 
@@ -64,6 +70,10 @@ Route::get('/lector/{libro}', [LibroController::class, 'lector'])
     ->middleware('auth')
     ->name('lector');
 
+// ver resenas
+Route::post('/libros/{libro}/resenas', [ResenaController::class, 'store'])
+        ->name('resenas.store');
+
 
 // dahsboard y crud
 // Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
@@ -85,20 +95,44 @@ Route::get('/lector/{libro}', [LibroController::class, 'lector'])
 //         Route::resource('libros', LibroController::class);
 // });
 
-// Unificamos todo lo que sea del panel de administración aquí
+// panel de administración aquí
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
-    // AQUÍ DEJAMOS LOS LIBROS UNA SOLA VEZ
+    // libros
     Route::resource('libros', LibroController::class);
-    
-    // Si necesitas las de home, clubs y players bajo el alias admin., puedes meterlas aquí mismo:
+    Route::resource('categorias', CategoriaController::class);
+    Route::resource('ejemplares', EjemplarController::class)->except(['create','store','destroy']);
+    // reservas (solo imdex y delete)
+    Route::get('/reservas', [ReservaController::class, 'index'])
+        ->name('reservas.index');
+
+    Route::delete('/reservas/{reserva}', [ReservaController::class, 'destroy'])
+        ->name('reservas.destroy');
+
+    // user, solo index y eliminar
+    Route::get('/usuarios', [UserController::class, 'index'])
+        ->name('usuarios.index');
+
+    Route::delete('/usuarios/{user}', [UserController::class, 'destroy'])
+        ->name('usuarios.destroy');
+
+    // reseñas solo ver y eliminar, y para ver las resenas en los libros
+    Route::get('/resenas', [ResenaController::class, 'index'])
+        ->name('admin.resenas.index');
+
+    Route::get('/resenas', [ResenaController::class, 'index'])
+        ->name('resenas.index');
+
+    Route::delete('/resenas/{resena}', [ResenaController::class, 'destroy'])
+        ->name('resenas.destroy');
+
+    // homa con .admin
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
-
 
 
 /*

@@ -14,20 +14,20 @@
         class="{{ request()->routeIs('admin.libros.*') ? 'active' : '' }}">
             Libros
         </a>
-        <a href="#">
+        <a href="{{ route('admin.categorias.index') }}">
             Categorías
         </a>
-        <a href="#">
+        <a href="{{ route('admin.ejemplares.index') }}">
             Ejemplares
         </a>
-        <a href="#">
+        <a href="{{ route('admin.reservas.index') }}">
             Reservas
         </a>
-        <a href="#">
+        <a href="{{ route('admin.resenas.index') }}">
             Reseñas
         </a>
-        <a href="#">
-            Usuarios
+        <a href="{{ route('admin.usuarios.index') }}">
+            Usuario
         </a>
 
         {{-- <hr>

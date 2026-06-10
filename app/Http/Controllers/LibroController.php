@@ -8,6 +8,8 @@ use App\Models\Libro;
 use App\Models\Reserva;
 use App\Models\Ejemplar;
 use Carbon\Carbon;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use App\Models\Categoria;
 
 class LibroController extends Controller
 {
@@ -35,7 +37,9 @@ class LibroController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Categoria::orderBy('nombre')->get();
+
+        return view('admin.libros.create', compact('categorias'));
     }
 
     /**
@@ -43,7 +47,76 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validaciones
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'autor' => 'required|string|max:255',
+            'isbn' => 'required|string|max:50',
+            'descripcion' => 'nullable|string',
+            'genero' => 'nullable|string|max:100',
+            'idioma' => 'nullable|string|max:50',
+            'anio_publicacion' => 'nullable|integer|min:0|max:' . date('Y'),
+            'clasificacion_edad' => 'required|in:infantil,juvenil,adulto',
+            'max_prestamos' => 'required|integer|min:1',
+            'categoria_id' => 'required|exists:categorias,id',
+
+            'portada' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'archivo_pdf' => 'nullable|mimes:pdf|max:20000',
+        ]);
+
+        // portada cloudianry
+        $portadaUrl = null;
+
+        if ($request->hasFile('portada')) {
+            $portadaUrl = Cloudinary::upload(
+                $request->file('portada')->getRealPath(),
+                [
+                    'folder' => 'biblioteca/portadas'
+                ]
+            )->getSecurePath();
+        }
+
+        // pdf
+        $pdfUrl = null;
+
+        if ($request->hasFile('archivo_pdf')) {
+            $pdfUrl = Cloudinary::uploadFile(
+                $request->file('archivo_pdf')->getRealPath(),
+                [
+                    'folder' => 'biblioteca/pdfs',
+                    'resource_type' => 'raw'
+                ]
+            )->getSecurePath();
+        }
+
+        // guardar bd
+        $libro = Libro::create([
+            'titulo' => $request->titulo,
+            'autor' => $request->autor,
+            'isbn' => $request->isbn,
+            'descripcion' => $request->descripcion,
+            'genero' => $request->genero,
+            'idioma' => $request->idioma,
+            'anio_publicacion' => $request->anio_publicacion,
+            'portada' => $portadaUrl,
+            'archivo_pdf' => $pdfUrl,
+            'clasificacion_edad' => $request->clasificacion_edad,
+            'max_prestamos' => $request->max_prestamos,
+            'categoria_id' => $request->categoria_id,
+        ]);
+
+        // ejemplares
+        for ($i = 1; $i <= $request->max_prestamos; $i++) {
+            Ejemplar::create([
+                'libro_id' => $libro->id,
+                'codigo' => 'EJ-' . $libro->id . '-' . $i,
+            ]);
+        }
+
+        // redireccion
+        return redirect()
+            ->route('admin.libros.index')
+            ->with('success', 'Libro creado correctamente');
     }
 
     /**
@@ -68,12 +141,18 @@ class LibroController extends Controller
                 ->first();
         }
 
+        // ver reseñas
+        $resenas = $libro->resenas()->with('user')->latest()->get();
+        $mediaPuntuacion = $libro->resenas()->avg('puntuacion');
+
         return view(
             'libro.show',
             compact(
                 'libro',
                 'disponibles',
-                'proximaDisponibilidad'
+                'proximaDisponibilidad',
+                'resenas',
+                'mediaPuntuacion'
             )
         );
     }
@@ -81,17 +160,83 @@ class LibroController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Libro $libro)
     {
-        //
+        $categorias = Categoria::orderBy('nombre')->get();
+
+        return view('admin.libros.edit', compact('libro', 'categorias'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Libro $libro)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'autor' => 'required|string|max:255',
+            'isbn' => 'required|string|max:50',
+            'descripcion' => 'nullable|string',
+            'genero' => 'nullable|string|max:100',
+            'idioma' => 'nullable|string|max:50',
+            'anio_publicacion' => 'nullable|integer',
+            'clasificacion_edad' => 'required|in:infantil,juvenil,adulto',
+            'max_prestamos' => 'required|integer|min:1',
+            'categoria_id' => 'required|exists:categorias,id',
+            'portada' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'archivo_pdf' => 'nullable|mimes:pdf|max:20000',
+        ]);
+
+        $portadaUrl = $libro->portada;
+        $pdfUrl = $libro->archivo_pdf;
+
+        if ($request->hasFile('portada')) {
+            $portadaUrl = Cloudinary::upload(
+                $request->file('portada')->getRealPath(),
+                ['folder' => 'biblioteca/portadas']
+            )->getSecurePath();
+        }
+
+        if ($request->hasFile('archivo_pdf')) {
+            $pdfUrl = Cloudinary::uploadFile(
+                $request->file('archivo_pdf')->getRealPath(),
+                [
+                    'folder' => 'biblioteca/pdfs',
+                    'resource_type' => 'raw'
+                ]
+            )->getSecurePath();
+        }
+
+        // sincronizar ejemplares
+        $actuales = $libro->ejemplares()->count();
+        $deseados = $request->max_prestamos;
+
+        if ($deseados > $actuales) {
+            for ($i = $actuales + 1; $i <= $deseados; $i++) {
+                Ejemplar::create([
+                    'libro_id' => $libro->id,
+                    'codigo' => 'EJ-' . $libro->id . '-' . $i,
+                ]);
+            }
+        }
+
+        $libro->update([
+            'titulo' => $request->titulo,
+            'autor' => $request->autor,
+            'isbn' => $request->isbn,
+            'descripcion' => $request->descripcion,
+            'genero' => $request->genero,
+            'idioma' => $request->idioma,
+            'anio_publicacion' => $request->anio_publicacion,
+            'portada' => $portadaUrl,
+            'archivo_pdf' => $pdfUrl,
+            'clasificacion_edad' => $request->clasificacion_edad,
+            'max_prestamos' => $request->max_prestamos,
+            'categoria_id' => $request->categoria_id,
+        ]);
+
+        return redirect()->route('admin.libros.index')
+            ->with('success', 'Libro actualizado correctamente');
     }
 
     /**

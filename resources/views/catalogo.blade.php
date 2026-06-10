@@ -38,6 +38,10 @@
             <p>No hay libros en esta categoría</p>
         @endforelse
 
+        {{-- paginacion --}}
+        <div class="paginacion">
+            {{ $libros->links() }}
+        </div>
     </div>
 
 @endsection

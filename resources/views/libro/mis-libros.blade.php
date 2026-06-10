@@ -9,7 +9,7 @@
     <h1>Mis libros</h1>
 
     @if($reservas->isEmpty())
-        <p>No tienes libros reservados.</p>
+        <p>No tienes libros reservados</p>
 
     @else
 
@@ -22,6 +22,7 @@
                     alt="{{ $reserva->libro->titulo }}"
                     class="portada-libro">
 
+                {{-- info del libro --}}
                 <div class="info-libro">
                     <h2>{{ $reserva->libro->titulo }}</h2>
                     <p>{{ $reserva->libro->autor }}</p>
@@ -31,8 +32,21 @@
                         al {{ $reserva->fecha_fin }}
                     </p>
 
-                    <div class="btn-reservas">
+                    {{-- formulario de reseñas --}}
+                    <form action="{{ route('resenas.store', $reserva->libro) }}" method="POST" class="reseña-form">
+                        @csrf
 
+                        <label>Valoración (1-5)</label>
+                        <input type="number" name="puntuacion" min="1" max="5" required>
+
+                        <label>Comentario</label>
+                        <textarea name="comentario" required></textarea>
+
+                        <button type="submit">Enviar reseña</button>
+                    </form>
+
+                    {{-- botones --}}
+                    <div class="btn-reservas">
                         {{-- boton leer --}}
                         <a href="{{ $reserva->libro->archivo_pdf }}" target="_blank">
                             Leer libro
@@ -55,6 +69,7 @@
 
             </div>
 
+            {{-- estado del libro, ¿hay ejemplares disponibles? --}}
             <p class="estado">
                 Estado: {{ ucfirst($reserva->estado) }}
             </p>

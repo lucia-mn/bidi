@@ -39,7 +39,7 @@
                @else
 
                     <p class="no-disponible">
-                         No hay ejemplares disponibles actualmente.
+                         No hay ejemplares disponibles actualmente
                     </p>
                     @if($proximaDisponibilidad)
                          <p class="proxima-fecha">
@@ -51,14 +51,45 @@
           </div>
      </div>
 
+     {{-- descripcion --}}
      <div class="descripcion-libro">
           <h2>Descripción</h2>
           <p>{{ $libro->descripcion }}</p>
      </div>
 
-     <div class="reseñas-libro">
-          <h2>Reseñas</h2
-          <p>Todavía no hay reseñas para este libro.</p>
+
+     {{-- reseñas --}}
+     <div class="resenas-libro">
+          <h2>Puntuación</h2>
+          
+          <div class="estrellas">
+          {{ number_format($mediaPuntuacion, 1) ?? 'Sin valoraciones' }}
+     </div>
+
+     <h2>Reseñas</h2>
+     
+     @forelse($resenas as $resena)
+          <div class="resena-card">
+               <div class="resena-header">
+                    <strong class="resena-user">
+                         {{ $resena->user->name }}
+                    </strong>
+
+                    <span class="resena-rating">
+                         {{ $resena->puntuacion }}/5
+                    </span>
+               </div>
+               <p class="resena-texto">
+                    {{ $resena->comentario }}
+               </p>
+
+          </div>
+     @empty
+          <p class="resena-vacia">
+               Todavía no hay reseñas para este libro
+          </p>
+     @endforelse
+
      </div>
 
 @endsection
