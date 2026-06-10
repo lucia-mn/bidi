@@ -18,9 +18,10 @@
             <div class="libro-card">
 
                 <img 
-                    src="{{ $reserva->libro->portada }}" 
-                    alt="{{ $reserva->libro->titulo }}" 
-                    class="portada-libro">
+                    src="{{ str_starts_with($reserva->libro->portada, 'http') ? 
+                        $reserva->libro->portada : asset('img/' . $reserva->libro->portada) }}" 
+                        alt="{{ $reserva->libro->titulo }}" 
+                        class="portada-libro">
 
                 {{-- info del libro --}}
                 <div class="info-libro">

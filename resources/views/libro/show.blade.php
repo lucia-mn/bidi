@@ -24,7 +24,9 @@
      {{-- empieza el bloque --}}
      <div class="detalle-libro">
           <div class="detalle-portada">
-               <img src="{{ $libro->portada }}" alt="{{ $libro->titulo }}">
+               <img src="{{ str_starts_with($libro->portada, 'http') ? 
+                    $libro->portada : 
+                    asset('img/' . $libro->portada) }}" alt="{{ $libro->titulo }}">
           </div>
 
           <div class="detalle-info">
