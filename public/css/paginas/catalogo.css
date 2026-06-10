@@ -111,4 +111,17 @@
         width: 100%;
         max-width: 100%;
     }
+
+    .libro-card h3 {
+        font-size: 14px;
+    }
+
+    .libro-card p {
+        font-size: 12px;
+    }
+
+    .paginacion {
+        padding: 20px 0;
+        overflow-x: auto;
+    }
 }

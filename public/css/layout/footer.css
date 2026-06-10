@@ -7,30 +7,28 @@
   border-top: 1px solid rgba(0,0,0,0.04);
 }
 
-.footer-texto{
-  max-width: 1400px;
+/* contenedor */
+.footer-texto {
+  max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+  align-items: start;
 }
 
 /* columnas */
 .footer-columna {
-  flex: 1 1 220px;
-  min-width: 160px;
+  min-width: 0;
 }
 
 .footer-columna h4 {
-  font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  font-size: 0.875rem;
-  margin-bottom: 10px;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
   color: var(--principal);
 }
 
-/* enlaces */
 .footer-columna ul {
   list-style: none;
   padding: 0;
@@ -38,27 +36,31 @@
 }
 
 .footer-columna a {
+  display: block;
   color: var(--oscuro);
   text-decoration: none;
   font-size: 0.75rem;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
+  padding: 4px 0;
 }
 
+.footer-columna a:hover {
+  color: var(--principal);
+}
 
-/* redes sociales */
+/* redes */
 .redes-sociales {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .iconos {
   display: flex;
-  justify-content: center;
   gap: 12px;
   padding: 0;
   margin: 0;
   list-style: none;
-  flex-wrap: wrap;
 }
 
 .iconos img {
@@ -67,23 +69,14 @@
   display: block;
 }
 
-.footer-final {
-  font-size: 0.75rem;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  color: var(--oscuro);
-  font-weight: 500;
-}
-
+/* final */
 .footer-final {
   max-width: 1200px;
-  margin: 24px auto 0;
-  padding: 0 16px;
-  color: var(--oscuro);
-  font-size: 0.75rem;
-  text-align: center;
-  border-top: 1px solid rgba(0,0,0,0.04);
+  margin: 30px auto 0;
   padding-top: 16px;
+  text-align: center;
+  font-size: 0.75rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
 
@@ -91,24 +84,16 @@
 @media (max-width: 768px) {
 
   .footer-texto {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
     gap: 25px;
     text-align: center;
   }
 
-  .footer-columna {
-    width: 100%;
-  }
-
   .footer-columna a {
-    display: block;
     padding: 6px 0;
   }
 
   .iconos {
     justify-content: center;
-    gap: 15px;
   }
-
 }
