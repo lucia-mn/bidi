@@ -21,6 +21,24 @@
     {{-- footer --}}
     @include('components.footer')
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const boton = document.getElementById('menuToggle');
+            const menu = document.querySelector('.botones-header');
+
+            if (!boton || !menu) return;
+
+            boton.addEventListener('click', function () {
+                menu.classList.toggle('active');
+            });
+
+        });
+    </script>
+
+    {{-- js en public/js menu --}}
+    <script src="{{ asset('js/menu.js') }}" defer></script>
+
     @yield('scripts')
 
 </body>

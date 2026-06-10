@@ -6,19 +6,6 @@
 
     @include('components.subheader')
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            const boton = document.getElementById('menuToggle');
-            const menu = document.querySelector('.botones-header');
-
-            boton.addEventListener('click', () => {
-                menu.classList.toggle('active');
-            });
-
-        });
-    </script>
-
     <!-- seccion hero -->
     <div class="hero">
         <div class="hero-texto">
@@ -42,8 +29,6 @@
                 <a href="{{ route('catalogo') }}" class="btn-catalogo">
                     Ver el catálogo
                 </a>
-                <!-- <button>Ver el catálogo</button>
-                <h3>¿Ya tienes una cuenta? Inicia sesión</h3> -->
             </div>
         </div>
     </div>
