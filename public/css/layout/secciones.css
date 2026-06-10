@@ -147,3 +147,42 @@
   background-color: #fff;
   align-items: center;
 }
+
+
+/* movil */
+@media (max-width: 768px) {
+
+  .novedades,
+  .mas-leidos,
+  .recomendados {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 12px;
+    padding: 12px 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .libro2 {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 140px;
+    scroll-snap-align: start;
+  }
+
+  .novedades::-webkit-scrollbar,
+  .mas-leidos::-webkit-scrollbar,
+  .recomendados::-webkit-scrollbar {
+    display: none;
+  }
+
+  .novedades,
+  .mas-leidos,
+  .recomendados {
+    scrollbar-width: none;
+  }
+
+}

@@ -36,10 +36,11 @@
 }
 
 .cat-buscar input {
-  padding: 12px 20px;
-  border-radius: 8px;
-  border: 1px solid gray;
-  width: 25rem; /* 400px */
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    width: 400px;
+    max-width: 90vw;
 }
 
 /* libros */
@@ -50,6 +51,9 @@
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .libro-card a {
@@ -67,7 +71,10 @@
 }
 
 .libro-card img {
-    border-radius: 4px;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 6px;
     margin-bottom: 10px;
 }
 
@@ -90,4 +97,18 @@
 
 .paginacion nav {
     font-size: 14px;
+}
+
+
+/* movil */
+@media (max-width: 768px) {
+    .formulario-buscar2 {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cat-buscar input {
+        width: 100%;
+        max-width: 100%;
+    }
 }
