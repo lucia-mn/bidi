@@ -70,9 +70,9 @@
 
             </div>
 
-            {{-- estado del libro, ¿hay ejemplares disponibles? --}}
+            {{-- estado del libro, hay ejemplares disponibles? --}}
             <p class="estado">
-                Estado: {{ ucfirst($reserva->estado) }}
+                Estado: <strong>{{ ucfirst($reserva->estado_usuario) }}</strong>
             </p>
         @endforeach
 

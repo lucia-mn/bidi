@@ -367,11 +367,22 @@ class LibroController extends Controller
     // libros reservados por el usuario
     public function misLibros()
     {
+        $hoy = Carbon::now()->startOfDay();
+
         $reservas = Reserva::with('libro')
             ->where('user_id', Auth::id())
             ->where('estado', 'activa')
             ->orderBy('fecha_inicio')
-            ->get();
+            ->get()
+            ->map(function ($reserva) use ($hoy) {
+                $inicio = Carbon::parse($reserva->fecha_inicio)->startOfDay();
+                $fin = Carbon::parse($reserva->fecha_fin)->endOfDay();
+
+                $reserva->esta_en_fecha = $hoy->between($inicio, $fin);
+                $reserva->estado_usuario = $hoy->lt($inicio) ? 'pendiente' : 'activa';
+
+                return $reserva;
+            });
 
         return view('libro.mis-libros', compact('reservas'));
     }
@@ -396,6 +407,19 @@ class LibroController extends Controller
     // lector pdf
     public function lector(Libro $libro)
     {
+        $hoy = Carbon::now()->startOfDay();
+
+        $tieneAcceso = Reserva::where('user_id', Auth::id())
+            ->where('libro_id', $libro->id)
+            ->where('estado', 'activa')
+            ->where('fecha_inicio', '<=', $hoy)
+            ->where('fecha_fin', '>=', $hoy)
+            ->exists();
+
+        if (!$tieneAcceso) {
+            return redirect()->route('libro.misLibros')->with('error', 'Aún no tienes acceso a la lectura de este libro');
+        }
+
         return view('libro.lector', compact('libro'));
     }
 }

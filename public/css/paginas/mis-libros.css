@@ -64,6 +64,11 @@
     cursor: pointer;
 }
 
+.btn-deshabilitado {
+    background-color: gray;
+    color: white;
+}
+
 .btn-reservas a {
     background: var(--principal);
     color: white;
@@ -114,7 +119,7 @@
 .estado{
     text-align: center;
     margin: 1rem 0 2rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--principal);
 }
 
